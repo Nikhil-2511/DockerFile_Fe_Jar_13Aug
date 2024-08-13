@@ -1,0 +1,21 @@
+# Use an official OpenJDK runtime as a parent image:
+FROM ubuntu
+
+# Create a Volume:
+VOLUME ["/jar_files1"]
+
+# Set the working directory in the container:
+WORKDIR /jar_files1
+
+# Copy the JAR file into the container at /jar_files:
+#COPY /home/ubuntu/ga-integration-1.0.0.jar /jar_files1/ga-integration-1.0.0.jar
+COPY ubuntu/ /jar_files1/ubuntu/
+
+# Copy the remaining files from the parent directory of the Dockerfile into /jar_files:
+#COPY .. jar_files1/
+
+# Expose port 8080 to the outside world:
+EXPOSE 8080
+
+# Run the JAR file with the specified environment variables:
+ENTRYPOINT ["/bin/bash"]
